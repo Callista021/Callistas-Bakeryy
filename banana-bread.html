@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Banana Bread — Callista's Bakery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background:#4b2840;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Callista's Bakery</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasPB1">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <a href="products.html" class="btn btn-outline-secondary mb-3">&larr; Back to products</a>
+
+    <div class="row g-4 product-detail">
+      <div class="col-md-6">
+        <img src="https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg" class="img-fluid rounded shadow-sm" alt="Banana Bread">
+      </div>
+
+      <div class="col-md-6">
+        <h2 style="font-family:'Playfair Display',serif;">Banana Bread</h2>
+        <div class="price fs-4 fw-bold">Rs. 120</div>
+        <p class="description">Our delicious banana bread is made with ripe bananas, walnuts, and a hint of cinnamon. It's moist and perfect for breakfast or an afternoon snack.</p>
+
+        <ul class="features">
+          <li>Fresh ripe bananas</li>
+          <li>Premium walnuts</li>
+          <li>No artificial preservatives</li>
+          <li>Baked daily</li>
+        </ul>
+
+        <div class="mt-3">
+          <label class="form-label">Quantity</label>
+          <div class="input-group mb-3" style="max-width:160px;">
+            <button class="btn btn-outline-secondary" type="button" onclick="decrementQty()">−</button>
+            <input id="qty" type="number" class="form-control text-center" value="1" min="1">
+            <button class="btn btn-outline-secondary" type="button" onclick="incrementQty()">+</button>
+          </div>
+
+          <button class="btn btn-primary me-2" onclick="addToCartDetail('Banana Bread')">
+            <i class="bi bi-cart-plus"></i> Add to Cart
+          </button>
+          <button class="btn btn-outline-primary" onclick="orderNow()">Order Now</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-4" style="background:#4b2840;color:#fdf6f0;">
+    <div class="container text-center">&copy; <span id="pyear"></span> Callista's Bakery</div>
+  </footer>
+
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
+    <div id="toastDetail" class="toast align-items-center text-white" role="alert" aria-live="assertive" aria-atomic="true"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('pyear').textContent = new Date().getFullYear();
+    function incrementQty(){ const q=document.getElementById('qty'); q.value = Math.min(parseInt(q.value||1)+1, 99); }
+    function decrementQty(){ const q=document.getElementById('qty'); q.value = Math.max(parseInt(q.value||1)-1, 1); }
+  </script>
+</body>
+</html>

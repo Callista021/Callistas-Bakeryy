@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Callista's Bakery</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm" style="background:#4b2840;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Callista's Bakery</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAbout">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <div class="row g-4 align-items-center">
+      <div class="col-md-6">
+        <img src="https://images.pexels.com/photos/302680/pexels-photo-302680.jpeg" class="img-fluid rounded-3 shadow-sm" alt="Bakery">
+      </div>
+      <div class="col-md-6">
+        <h2 style="font-family:'Playfair Display',serif;">Our Story</h2>
+        <p>Callista's Bakery started as a family kitchen in 1985. We take pride in using traditional recipes and locally-sourced ingredients to bring joy through baked goods.</p>
+        <p>We believe in freshness, sustainability, and creating a warm bakery experience for our community.</p>
+        <a href="products.html" class="btn btn-primary">See Our Products</a>
+      </div>
+    </div>
+
+    <hr class="my-5">
+
+    <h3>Frequently Asked Questions</h3>
+    <div class="accordion" id="faq">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq1">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">Do you take custom cake orders?</button>
+        </h2>
+        <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faq">
+          <div class="accordion-body">Yes — call or fill the contact form for custom cakes & catering requests.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq2">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">Do you deliver?</button>
+        </h2>
+        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faq">
+          <div class="accordion-body">We offer local delivery within the city through our partners and pickup from the shop.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-4" style="background:#4b2840;color:#fdf6f0;">
+    <div class="container text-center">&copy; <span id="ayear"></span> Callista's Bakery</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script>document.getElementById('ayear').textContent = new Date().getFullYear();</script>
+</body>
+</html>

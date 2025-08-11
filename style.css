@@ -1,0 +1,68 @@
+/* style.css - Callista's Bakery theme */
+*{box-sizing:border-box}
+body{
+  font-family: 'Source Sans 3', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: #fdf6f0;
+  color: #6b4f47;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Brand headings */
+h1,h2{font-family:'Playfair Display',serif;color:#a2678a}
+
+/* Navbar brand tweak */
+.navbar-brand img{filter:invert(1) hue-rotate(200deg) saturate(0.6)}
+
+/* Carousel images */
+.carousel-img{height:380px;object-fit:cover}
+
+/* Cards in products grid */
+.card{
+  border:none;
+  border-radius:12px;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.card:hover{
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 14px 40px rgba(75,40,64,0.12);
+}
+
+/* Buttons */
+.btn-primary{background:#d05781;border-color:#d05781}
+.btn-primary:hover{background:#e7a6b1;border-color:#e7a6b1;color:#222}
+
+/* Price style */
+.price{color:#d05781;font-weight:700}
+
+/* Product list grid */
+.product-card .card-img-top{
+  height:200px;object-fit:cover;border-top-left-radius:12px;border-top-right-radius:12px;
+}
+
+/* Product detail */
+.product-detail{background:#fff;padding:25px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.06)}
+
+/* small features */
+.features li{margin:6px 0;color:#70514a}
+
+/* Back button */
+.back-btn{display:inline-block;padding:8px 12px;background:#4b2840;color:#fff;border-radius:8px}
+
+/* Toast style override */
+.toast{background:#d05781}
+
+/* subtle fade-in animation */
+.fade-in{
+  opacity:0;
+  transform:translateY(8px);
+  animation: fadeInUp .6s ease forwards;
+}
+@keyframes fadeInUp{
+  to{opacity:1;transform:none}
+}
+
+/* responsive tweaks */
+@media (max-width:768px){
+  .carousel-img{height:220px}
+}

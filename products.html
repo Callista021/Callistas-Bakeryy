@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Products — Callista's Bakery</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+3&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- re-use navbar (copy from index.html) -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm" style="background:#4b2840;">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/bakery.png" alt="" width="34" height="34">
+        <span class="fs-5">Callista's Bakery</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu2">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="bootstrap-tutorial.html">BS5 Tutorial</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu2">
+    <div class="offcanvas-header" style="background:#a2678a;color:white;">
+      <h5 class="offcanvas-title">Menu</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h1 class="h3">All Products</h1>
+      <div>
+        <input id="productSearch" class="form-control form-control-sm" placeholder="Search products..." style="min-width:200px;">
+      </div>
+    </div>
+
+    <div id="productsGrid" class="row g-4">
+      <!-- JS will create product cards here -->
+    </div>
+
+    <nav class="mt-4" aria-label="Page navigation example">
+      <ul class="pagination justify-content-center" id="pagination">
+        <!-- simple client-side pagination if needed -->
+      </ul>
+    </nav>
+  </main>
+
+  <footer class="py-4" style="background:#4b2840;color:#fdf6f0;">
+    <div class="container text-center">
+      <p class="mb-1">&copy; <span id="py-year"></span> Callista's Bakery</p>
+    </div>
+  </footer>
+
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
+    <div id="liveToastProducts" class="toast align-items-center text-white" role="alert" aria-live="assertive" aria-atomic="true"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('py-year').textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', function(){
+      loadProductsPage();
+      initTooltips();
+      initSearch();
+    });
+  </script>
+</body>
+</html>
