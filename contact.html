@@ -2,111 +2,101 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact — Callista's Bakery</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm" style="background:#4b2840;">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Callista's Bakery</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasContact">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
-        </ul>
-      </div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background: linear-gradient(90deg, var(--pink), var(--lav));">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html" style="font-family: 'Great Vibes', cursive; font-size: 1.8rem;">
+      Callista's Bakery ❤️
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+      </ul>
     </div>
-  </nav>
-
-  <main class="container my-5">
-    <div class="row g-4">
-      <div class="col-md-5">
-        <h2>Contact Us</h2>
-        <p>Phone: (+977) 9841347856<br>Email: hello@callistasbakery.com<br>Address: 123 Sweet Street</p>
-
-        <h5 class="mt-4">Opening Hours</h5>
-        <ul class="list-group">
-          <li class="list-group-item">Mon-Fri: 6:00 AM - 8:00 PM</li>
-          <li class="list-group-item">Sat: 7:00 AM - 9:00 PM</li>
-          <li class="list-group-item">Sun: 8:00 AM - 6:00 PM</li>
-        </ul>
-      </div>
-
-      <div class="col-md-7">
-        <form id="contactForm" class="needs-validation" novalidate>
-          <div class="mb-3">
-            <label class="form-label">Your Name</label>
-            <input type="text" class="form-control" id="name" required>
-            <div class="invalid-feedback">Please enter your name.</div>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" required>
-            <div class="invalid-feedback">Please enter a valid email.</div>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Subject</label>
-            <select id="subject" class="form-select" required>
-              <option value="">Choose...</option>
-              <option>General Question</option>
-              <option>Order</option>
-              <option>Catering</option>
-              <option>Custom Cake</option>
-            </select>
-            <div class="invalid-feedback">Please choose a subject.</div>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Message</label>
-            <textarea id="message" class="form-control" rows="5" required></textarea>
-            <div class="invalid-feedback">Please enter a message.</div>
-          </div>
-
-          <button class="btn btn-primary" type="submit">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </main>
-
-  <footer class="py-4" style="background:#4b2840;color:#fdf6f0;">
-    <div class="container text-center">&copy; <span id="cyear"></span> Callista's Bakery</div>
-  </footer>
-
-  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
-    <div id="toastContact" class="toast align-items-center text-white" role="alert" aria-live="assertive" aria-atomic="true"></div>
   </div>
+</nav>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
-  <script>
-    document.getElementById('cyear').textContent = new Date().getFullYear();
+<!-- Contact Form -->
+<main class="container py-5">
+  <h1>Contact Us</h1>
+  <p>Send us a message for orders, custom cakes, or catering.</p>
 
-    // Bootstrap form validation + toast on submit
-    (function () {
-      'use strict'
-      const form = document.getElementById('contactForm');
-      form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (!form.checkValidity()) {
-          form.classList.add('was-validated');
-          return;
-        }
-        form.reset();
-        showToast('Thank you! Your message has been sent.', 'success', 'toastContact');
-      }, false)
-    })();
-  </script>
+  <div class="row g-4">
+    <div class="col-md-6">
+      <form id="contactForm" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="name" class="form-label">Your Name *</label>
+          <input id="name" class="form-control" type="text" required>
+          <div class="invalid-feedback">Please enter your name.</div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email *</label>
+          <input id="email" class="form-control" type="email" required>
+          <div class="invalid-feedback">Please enter a valid email.</div>
+        </div>
+        <div class="mb-3">
+          <label for="subject" class="form-label">Subject *</label>
+          <select id="subject" class="form-select" required>
+            <option value="">Choose...</option>
+            <option value="order">Place an Order</option>
+            <option value="custom">Custom Cake</option>
+            <option value="feedback">Feedback</option>
+          </select>
+          <div class="invalid-feedback">Please choose a subject.</div>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message *</label>
+          <textarea id="message" class="form-control" rows="5" required></textarea>
+          <div class="invalid-feedback">Please write your message.</div>
+        </div>
+        <button type="submit" class="btn btn-pink">Send Message</button>
+      </form>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5>Contact Info</h5>
+          <p><strong>Phone:</strong> (+977) 9841347856</p>
+          <p><strong>Email:</strong> hello@callistasbakery.com</p>
+          <p><strong>Address:</strong> 123 Sweet Street, Nepal</p>
+          <hr>
+          <h6>Business Hours</h6>
+          <table class="table table-sm">
+            <tbody>
+              <tr><td>Mon-Fri</td><td>6:00 AM - 8:00 PM</td></tr>
+              <tr><td>Saturday</td><td>7:00 AM - 9:00 PM</td></tr>
+              <tr><td>Sunday</td><td>8:00 AM - 6:00 PM</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="text-white py-3 mt-5" style="background: linear-gradient(90deg, var(--pink), var(--lav));">
+  <div class="container text-center">
+    <small>&copy; 2024 Callista's Bakery | (+977) 9841347856 | hello@callistasbakery.com</small>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
