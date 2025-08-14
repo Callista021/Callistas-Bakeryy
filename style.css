@@ -1,165 +1,38 @@
 /* style.css - custom site styles + hovers + animations */
 
-/* fonts set via html imports in head */
-:root{
-  --pink:#d05781;
-  --lav:#a2678a;
+/* Color variables */
+:root {
+  --pink: #d05781;
+  --lav: #a2678a;
   --bg: #fdf6f0;
 }
-.btn-gradient {
-    background: linear-gradient(90deg, var(--pink), var(--lav));
-    border: none;
-    color: white !important;
-    font-weight: 500;
-    padding: 10px 20px;
-    border-radius: 6px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.btn-gradient:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    color: white !important;
-}
-
-
-/* reset basics */
-*{box-sizing:border-box}
-body{
+/* General resets */
+* { box-sizing: border-box; }
+body {
   font-family: 'Source Sans 3', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background:var(--bg);
-  color:#5b463f;
-  -webkit-font-smoothing:antialiased;
+  background: var(--bg);
+  color: #5b463f;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Hero */
-.bg-hero{
-  background-image: linear-gradient(180deg, rgba(160,90,130,0.15), rgba(255,255,255,0.05)), url('https://images.pexels.com/photos/1026126/pexels-photo-1026126.jpeg');
-  background-size: cover;
-  background-position: center;
-  padding:5rem 0;
-  animation: fadeInUp .7s ease both;
-}
-@keyframes fadeInUp {
-  from { opacity:0; transform: translateY(12px) }
-  to   { opacity:1; transform: translateY(0) }
-}
-
-/* Buttons */
-.btn-pink{
-  background: linear-gradient(90deg,var(--pink),var(--lav));
-  color:#fff;
-  border:0;
-  box-shadow: 0 8px 18px rgba(160,90,130,0.14);
-}
-.btn-pink:hover{ transform: translateY(-3px); opacity:0.95; transition: all .18s ease }
-
-/* Product cards (in productsGrid) */
-.product-card {
-  transition: transform .25s ease, box-shadow .25s ease;
-  will-change: transform;
-}
-.product-card:hover{
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-}
-
-/* card image overlay rating */
-.rating {
-  position:absolute; right:12px; top:12px;
-  background:#fff; padding:.25rem .6rem; border-radius:20px; font-weight:600; color:var(--pink);
-  box-shadow: 0 6px 22px rgba(0,0,0,0.06);
-}
-
-/* colors and text helpers */
-.text-pink{ color:var(--pink) }
-.bg-pink{ background: linear-gradient(90deg,var(--pink),var(--lav)); color:#fff }
-
-/* product detail panel */
-.product-detail { animation: popIn .5s ease both }
-@keyframes popIn { from {opacity:0; transform:scale(.995) } to {opacity:1; transform:none} }
-
-/* small transitions */
-a, button, .product-buttons .btn { transition: all .18s ease }
-
-/* footer */
-footer { background:#34202e; color:#f5eaea }
-
-/* toast custom */
-.bg-pink{ background: linear-gradient(90deg,var(--pink),var(--lav)) !important }
-
-/* responsive tweaks */
-@media (max-width:768px){
-  .bg-hero { padding:3rem 0; background-position:top }
-}
-
-/* Utility: gentle pulse to call-to-action */
-.pulse { animation: pulseAnim 2s infinite; }
-@keyframes pulseAnim {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-  100% { transform: scale(1); }
-}
-/* Product grid uniform size */
-.product-image img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-/* Carousel uniform size */
-.carousel-item img {
-  height: 450px; /* adjust if needed */
-  object-fit: cover;
-}
-/* Uniform image size in product cards */
-.product-image img {
-  width: 100%;
-  height: 220px; /* adjust as needed */
-  object-fit: cover;
-  border-radius: 8px;
-}
-.carousel-item img {
-  height: 400px; /* adjust to preference */
-  object-fit: cover;
-}
-.product-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
+/* Gradient buttons */
 .btn-gradient {
-    background: linear-gradient(90deg, var(--pink), var(--lav));
-    border: none;
-    color: white;
-    font-weight: 500;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.btn-gradient:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    color: white;
-}
-.fixed-img {
-  height: 200px; /* uniform height */
-  object-fit: cover; /* ensures image covers without distortion */
-}
-
-.custom-btn {
   background: linear-gradient(90deg, var(--pink), var(--lav));
-  color: white;
   border: none;
-  padding: 0.5rem 1.2rem;
-  transition: 0.3s;
+  color: white !important;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-gradient:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  color: white !important;
 }
 
-.custom-btn:hover {
-  opacity: 0.9;
-}
+/* Custom button for product cards */
 .custom-btn {
   background: linear-gradient(90deg, var(--pink), var(--lav));
   color: white;
@@ -168,8 +41,99 @@ footer { background:#34202e; color:#f5eaea }
   font-weight: 500;
   transition: 0.3s;
 }
-
 .custom-btn:hover {
   opacity: 0.9;
 }
 
+/* Hero section */
+.bg-hero {
+  background-image: linear-gradient(180deg, rgba(160,90,130,0.15), rgba(255,255,255,0.05)), url('https://images.pexels.com/photos/1026126/pexels-photo-1026126.jpeg');
+  background-size: cover;
+  background-position: center;
+  padding: 5rem 0;
+  animation: fadeInUp .7s ease both;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Product card hover */
+.product-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+.product-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* Rating badge */
+.rating {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background: #fff;
+  padding: .25rem .6rem;
+  border-radius: 20px;
+  font-weight: 600;
+  color: var(--pink);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.06);
+}
+
+/* Product detail animation */
+.product-detail {
+  animation: popIn .5s ease both;
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(.995); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Footer styling */
+footer {
+  background: #34202e;
+  color: #f5eaea;
+}
+
+/* Pulse animation utility */
+.pulse {
+  animation: pulseAnim 2s infinite;
+}
+@keyframes pulseAnim {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+/* Product images */
+.fixed-img {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.product-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Carousel images */
+.carousel-item img {
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Mobile responsive tweaks */
+@media (max-width: 768px) {
+  .bg-hero { padding: 3rem 0; background-position: top; }
+}
+@media (max-width: 576px) {
+  .carousel-item img {
+    height: 250px;
+  }
+  .card-title {
+    font-size: 1rem;
+  }
+}
