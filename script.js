@@ -74,3 +74,48 @@ function loadProducts() {
 
 // Run when page loads
 document.addEventListener("DOMContentLoaded", loadProducts);
+// Import Firebase SDK modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-analytics.js";
+import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+
+// Your Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyBhw5BcOzl-G23uFx3-nemWXFsabF2FLT4",
+  authDomain: "callista-s-bakery.firebaseapp.com",
+  projectId: "callista-s-bakery",
+  storageBucket: "callista-s-bakery.firebasestorage.app",
+  messagingSenderId: "951182255921",
+  appId: "1:951182255921:web:94db483e39445aeed63210",
+  measurementId: "G-60HM59BT26"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const db = getDatabase(app);
+
+// Handle form submit
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const subject = document.getElementById("subject").value;
+  const message = document.getElementById("message").value;
+
+  push(ref(db, "contactMessages"), {
+    name,
+    email,
+    subject,
+    message,
+    timestamp: new Date().toISOString()
+  }).then(() => {
+    alert("Message sent successfully!");
+    document.getElementById("contactForm").reset();
+  }).catch((error) => {
+    console.error(error);
+    alert("Error sending message.");
+  });
+});
+
