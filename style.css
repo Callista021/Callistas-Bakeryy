@@ -124,6 +124,23 @@ footer {
   height: 400px;
   object-fit: cover;
 }
+/* Navbar login/register buttons */
+.login-btn {
+  border: 2px solid white;
+  color: white !important;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.login-btn:hover {
+  background: white;
+  color: var(--lav) !important;
+}
+
+.register-btn {
+  font-weight: 600;
+  border-radius: 6px;
+}
+
 
 /* Mobile responsive tweaks */
 @media (max-width: 768px) {

@@ -1,4 +1,5 @@
-// Product data
+<script type="module">
+// -------------------- PRODUCTS --------------------
 const products = [
     {
         id: 1,
@@ -42,9 +43,10 @@ const products = [
     }
 ];
 
-// Load products into Featured Products grid
+// Load products dynamically
 function loadProducts() {
     const grid = document.getElementById("productsGrid");
+    if (!grid) return;
     grid.innerHTML = "";
 
     products.forEach(product => {
@@ -63,7 +65,6 @@ function loadProducts() {
                     <p class="card-text text-muted">${product.description}</p>
                     <p class="fw-bold">${product.price}</p>
                     <a href="${product.detailsPage}" class="btn btn-gradient w-100">View Details</a>
-
                 </div>
             </div>
         `;
@@ -72,14 +73,15 @@ function loadProducts() {
     });
 }
 
-// Run when page loads
 document.addEventListener("DOMContentLoaded", loadProducts);
-// Import Firebase SDK modules
+
+// -------------------- FIREBASE --------------------
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-analytics.js";
 import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js";
 
-// Your Firebase config
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyBhw5BcOzl-G23uFx3-nemWXFsabF2FLT4",
   authDomain: "callista-s-bakery.firebaseapp.com",
@@ -94,28 +96,82 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getDatabase(app);
+const auth = getAuth(app);
 
-// Handle form submit
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+// -------------------- CONTACT FORM --------------------
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const subject = document.getElementById("subject").value;
-  const message = document.getElementById("message").value;
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value;
 
-  push(ref(db, "contactMessages"), {
-    name,
-    email,
-    subject,
-    message,
-    timestamp: new Date().toISOString()
-  }).then(() => {
-    alert("Message sent successfully!");
-    document.getElementById("contactForm").reset();
-  }).catch((error) => {
-    console.error(error);
-    alert("Error sending message.");
+    push(ref(db, "contactMessages"), {
+      name,
+      email,
+      subject,
+      message,
+      timestamp: new Date().toISOString()
+    }).then(() => {
+      alert("Message sent successfully!");
+      contactForm.reset();
+    }).catch((error) => {
+      console.error(error);
+      alert("Error sending message.");
+    });
   });
-});
+}
 
+// -------------------- REGISTER --------------------
+const registerForm = document.getElementById("registerForm");
+if (registerForm) {
+  registerForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("regEmail").value;
+    const password = document.getElementById("regPassword").value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        alert("Registration successful! Welcome " + email);
+        registerForm.reset();
+      })
+      .catch((error) => {
+        alert("Error: " + error.message);
+      });
+  });
+}
+
+// -------------------- LOGIN --------------------
+const loginForm = document.getElementById("loginForm");
+if (loginForm) {
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        alert("Login successful! Welcome back " + email);
+        loginForm.reset();
+      })
+      .catch((error) => {
+        alert("Error: " + error.message);
+      });
+  });
+}
+
+// -------------------- LOGOUT --------------------
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    signOut(auth).then(() => {
+      alert("Logged out successfully.");
+    }).catch((error) => {
+      alert("Error: " + error.message);
+    });
+  });
+}
+</script>
