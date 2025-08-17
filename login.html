@@ -65,31 +65,47 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  document.getElementById("loginForm").addEventListener("submit", function(e) {
+
+<!-- ✅ Firebase Login Script -->
+<script type="module">
+  // Import Firebase SDK
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+  // 🔹 Your Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyDIHwp3cyGch16S_WSv8UrUT7PJTJ21pi8",
+    authDomain: "christina-448f2.firebaseapp.com",
+    databaseURL: "https://christina-448f2-default-rtdb.firebaseio.com",
+    projectId: "christina-448f2",
+    storageBucket: "christina-448f2.firebasestorage.app",
+    messagingSenderId: "640057777362",
+    appId: "1:640057777362:web:f50e7ced6264a777a6e10b",
+    measurementId: "G-MW49LFK62Y"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Handle login with Firebase Auth
+  document.getElementById("loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    // Get user data from localStorage
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
-    if (!storedUser) {
-      alert("⚠️ No user found. Please register first.");
-      window.location.href = "registration.html";
-      return;
-    }
-
-    // Validate login
-    if (email === storedUser.email && password === storedUser.password) {
-      alert(`🎉 Welcome back, ${storedUser.name}!`);
-      localStorage.setItem("isLoggedIn", "true");
-      window.location.href = "index.html"; // Redirect to homepage
-    } else {
-      alert("❌ Invalid email or password. Please try again.");
+      alert(`🎉 Welcome back, ${user.email}!`);
+      window.location.href = "index.html"; // redirect after login
+    } catch (error) {
+      alert("❌ " + error.message);
     }
   });
 </script>
+
 </body>
 </html>
